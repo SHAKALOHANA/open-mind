@@ -1,9 +1,9 @@
 import React from "react";
 import "./Buttonfloating.css";
 
-export const FloatingButton = ({ onModalOpen }) => {
+export const FloatingButton = ({ onClick }) => {
   const handleButtonClick = () => {
-    onModalOpen(true);
+    onClick(true);
   };
 
   return (

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "../styles/global.css";
+import { ReactComponent as ArrowRight } from "../assets/icon/arrow-right.svg";
 
 const StyledButton = styled.button`
   display: inline-flex;
@@ -15,11 +16,11 @@ const StyledButton = styled.button`
   gap: 8px;
   background-color: ${({ mode }) => {
     switch (mode) {
-      case "getQuestion":
-        return "var(--brown-40)";
       case "goToReply":
       case "askQuestion":
         return "var(--brown-10)";
+      case "getQuestion":
+      case "SendQuestion":
       default:
         return "var(--brown-40)";
     }
@@ -27,11 +28,11 @@ const StyledButton = styled.button`
 
   color: ${({ mode }) => {
     switch (mode) {
-      case "getQuestion":
-        return "var(--gray-10)";
       case "goToReply":
       case "askQuestion":
         return "var(--brown-40)";
+      case "getQuestion":
+      case "SendQuestion":
       default:
         return "var(--gray-10)";
     }
@@ -39,11 +40,11 @@ const StyledButton = styled.button`
 
   outline: ${({ mode }) => {
     switch (mode) {
-      case "getQuestion":
-        return "none";
       case "goToReply":
       case "askQuestion":
         return "1px solid var(--brown-40);";
+      case "getQuestion":
+      case "SendQuestion":
       default:
         return "none";
     }
@@ -52,11 +53,11 @@ const StyledButton = styled.button`
   &:hover {
     outline: ${({ mode }) => {
       switch (mode) {
-        case "getQuestion":
-          return "2px solid var(--brown-50)";
         case "goToReply":
         case "askQuestion":
           return "2px solid var(--brown-40)";
+        case "getQuestion":
+        case "SendQuestion":
         default:
           return "2px solid var(--brown-50)";
       }
@@ -66,11 +67,11 @@ const StyledButton = styled.button`
   &:active {
     outline: ${({ mode }) => {
       switch (mode) {
-        case "getQuestion":
-          return "none";
         case "goToReply":
         case "askQuestion":
           return "2px solid var(--brown-40)";
+        case "getQuestion":
+        case "SendQuestion":
         default:
           return "none";
       }
@@ -78,11 +79,11 @@ const StyledButton = styled.button`
 
     background-color: ${({ mode }) => {
       switch (mode) {
-        case "getQuestion":
-          return "var(--brown-50)";
         case "goToReply":
         case "askQuestion":
           return "var(--brown-20)";
+        case "getQuestion":
+        case "SendQuestion":
         default:
           return "var(--brown-50)";
       }
@@ -92,11 +93,11 @@ const StyledButton = styled.button`
   &:disabled {
     background-color: ${({ mode }) => {
       switch (mode) {
-        case "getQuestion":
-          return "var(--brown-30)";
         case "goToReply":
         case "askQuestion":
           return "var(--brown-10)";
+        case "getQuestion":
+        case "SendQuestion":
         default:
           return "var(--brown-30)";
       }
@@ -115,11 +116,12 @@ const StyledButton = styled.button`
 
     width: ${({ mode }) => {
       switch (mode) {
-        case "getQuestion":
-          return "257px";
+        case "SendQuestion":
+          return "279px";
         case "goToReply":
         case "askQuestion":
           return "130px";
+        case "getQuestion":
         default:
           return "257px";
       }
@@ -127,11 +129,11 @@ const StyledButton = styled.button`
 
     height: ${({ mode }) => {
       switch (mode) {
-        case "getQuestion":
-          return "46px";
         case "goToReply":
         case "askQuestion":
           return "34px";
+        case "getQuestion":
+        case "SendQuestion":
         default:
           return "46px";
       }
@@ -141,11 +143,12 @@ const StyledButton = styled.button`
   @media (min-width: 767px) and (max-width: 1024px) {
     width: ${({ mode }) => {
       switch (mode) {
-        case "getQuestion":
-          return "336px";
+        case "SendQuestion":
+          return "532px";
         case "goToReply":
         case "askQuestion":
           return "166px";
+        case "getQuestion":
         default:
           return "336px";
       }
@@ -153,11 +156,10 @@ const StyledButton = styled.button`
 
     height: ${({ mode }) => {
       switch (mode) {
-        case "getQuestion":
-          return "46px";
         case "goToReply":
         case "askQuestion":
-          return "46px";
+        case "getQuestion":
+        case "SendQuestion":
         default:
           return "46px";
       }
@@ -167,11 +169,12 @@ const StyledButton = styled.button`
   @media (min-width: 1025px) {
     width: ${({ mode }) => {
       switch (mode) {
-        case "getQuestion":
-          return "336px";
+        case "SendQuestion":
+          return "532px";
         case "goToReply":
         case "askQuestion":
           return "166px";
+        case "getQuestion":
         default:
           return "336px";
       }
@@ -180,10 +183,9 @@ const StyledButton = styled.button`
     height: ${({ mode }) => {
       switch (mode) {
         case "getQuestion":
-          return "46px";
         case "goToReply":
         case "askQuestion":
-          return "46px";
+        case "SendQuestion":
         default:
           return "46px";
       }
@@ -191,9 +193,22 @@ const StyledButton = styled.button`
   }
 `;
 
-const ArrowIcon = styled.img`
-  width: 18px;
-  height: 18px;
+const ArrowRightIcon = () => {
+  return (
+    <Container>
+      <ArrowRight className="arrow_right_icon" />
+    </Container>
+  );
+};
+
+const Container = styled.div`
+  .arrow_right_icon {
+    width: 18px;
+    height: 18px;
+    path {
+      fill: var(--brown-40);
+    }
+  }
 `;
 
 const CustomButton = ({ mode = "getQuestion", onClick, disabled = false }) => {
@@ -202,13 +217,14 @@ const CustomButton = ({ mode = "getQuestion", onClick, disabled = false }) => {
       getQuestion: "질문 받기",
       goToReply: "답변하러 가기",
       askQuestion: "질문하러 가기",
+      SendQuestion: "질문 보내기",
     }[mode] || "버튼";
 
   return (
     <StyledButton mode={mode} onClick={onClick} disabled={disabled}>
       {buttonText}
       {(mode === "goToReply" || mode === "askQuestion") && (
-        <ArrowIcon src="" alt="Arrow Icon" />
+        <ArrowRightIcon alt="ArrowIcon" />
       )}
     </StyledButton>
   );

@@ -1,48 +1,45 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
 
 :root {
-	/* Gray scale */
-	--gray-60: #000000;
-	--gray-50: #515151;
-	--gray-40: #454c53;
-	--gray-30: #818181;
-	--gray-20: #cfcfcf;
-	--gray-10: #ffffff;
+  /* Gray scale */
+  --gray-60: #000000;
+  --gray-50: #515151;
+  --gray-40: #818181;
+  --gray-30: #cfcfcf;
+  --gray-20: #f9f9f9;
+  --gray-10: #ffffff;
 
+  /* Brown  */
+  --brown-50: #341909;
+  --brown-40: #542f1a;
+  --brown-30: #c7bbb5;
+  --brown-20: #e4d5c9;
+  --brown-10: #f5f1ee;
 
-    /* Brown  */
-    --brown-50: #341909;
-    --brown-40: #542F1A;
-    --brown-30: #C7BBB5;
-    --brown-20: #E4D5C9;
-    --brown-10: #F5F1EE;  
-    
-    /* Blue */
-    --blue-50:#1877F2;
-    /* Yellow */
-    --yellow-50:#FEE500;
-    /* Red */
-    --red-50:#B93333;
+  /* Blue */
+  --blue-50: #1877f2;
+  /* Yellow */
+  --yellow-50: #fee500;
+  /* Red */
+  --red-50: #b93333;
 
-
-	/* shadow */
-	--box-shadow-1px: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
-	--box-shadow-2px: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-	--box-shadow-3px: 0px 16px 20px 0px rgba(48, 48, 48, 0.62);
+  /* shadow */
+  --box-shadow-1px: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
+  --box-shadow-2px: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --box-shadow-3px: 0px 16px 20px 0px rgba(48, 48, 48, 0.62);
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-	word-break: keep-all;
-	font-family: Pretendard, sans-serif;
+  word-break: keep-all;
+  font-family: Pretendard, sans-serif;
 }
 body {
-	margin: 0;
-	background: #f9f9f9;
+  margin: 0;
+  background: #f9f9f9;
 }
