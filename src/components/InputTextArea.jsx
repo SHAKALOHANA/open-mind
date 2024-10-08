@@ -16,6 +16,7 @@ const StyledTextArea = styled.textarea`
   border: none;
   gap: 10px;
   color: var(--gray-60);
+  resize: none;
   &:focus {
     outline: 1px solid var(--brown-40);
   }

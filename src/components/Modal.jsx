@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
-import { ReactComponent as CloseIcon } from "../assets/icon/Close.svg"; // Renamed for clarity
+import { ReactComponent as CloseIcon } from "../assets/icon/Close.svg";
 
 const ModalOverlay = styled.div`
   position: fixed;

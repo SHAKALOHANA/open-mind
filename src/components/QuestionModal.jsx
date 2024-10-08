@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useParams } from "react";
 import { ReactComponent as IconMessage } from "../assets/icon/Messages.svg";
 import { FloatingButton } from "./Buttonfloating/Buttonfloating";
 import "../styles/global.css";
@@ -88,9 +88,8 @@ const UserInformation = ({ name, imageSource }) => {
 };
 
 const QuestionModal = () => {
+  const { id: subjectid } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [username, setUsername] = useState("");
-  const [iconUrl, setIconUrl] = useState("");
   const [questionText, setQuestionText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -98,23 +97,6 @@ const QuestionModal = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setQuestionText("");
-  };
-
-  useEffect(() => {
-    if (isModalOpen) {
-      fetchUserData();
-    }
-  }, [isModalOpen]);
-
-  const fetchUserData = async () => {
-    try {
-      const response = await fetch(`/api/username`);
-      const data = await response.json();
-      setUsername(data.username);
-      setIconUrl(data.iconUrl);
-    } catch (error) {
-      console.error("Failed to fetch user data:", error);
-    }
   };
 
   const handleSendQuestion = async () => {
@@ -127,14 +109,17 @@ const QuestionModal = () => {
 
     try {
       const response = await fetch(
-        "https://openmind-api.vercel.app/api/questions",
+        `https://openmind-api.vercel.app/10-1/subjects/${subjectid}/questions`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+
           body: JSON.stringify({
-            question: questionText,
+            subjectid: subjectid,
+            content: questionText,
+            team: "10-1",
           }),
         }
       );
@@ -162,7 +147,7 @@ const QuestionModal = () => {
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <ModalBody>
           <MessageIcon />
-          <UserInformation username={username} iconUrl={iconUrl} />
+          <UserInformation />
           <ContentWrapper>
             <InputTextArea
               mode="enterTheQuestion"
