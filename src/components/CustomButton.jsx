@@ -202,6 +202,10 @@ const ArrowRightIcon = () => {
 };
 
 const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
   .arrow_right_icon {
     width: 18px;
     height: 18px;
